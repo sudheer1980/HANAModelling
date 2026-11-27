@@ -15,11 +15,15 @@ profile: 'default'
 model-paths: ["models"]
 models: 
   my_new_project:
-    +materialized: view
+    +materialized: table 
     example:
       +materialized: view
     Staging:
       +materialized: view
+    
+    Incremental:
+     +materialized: incremental
+     +incremental_strategy: delete+insert
 
 
 analysis-paths: ["analyses"]
