@@ -7,7 +7,9 @@ with trips_fact as (
         start_station_id as station_id,
         end_station_id as end_station,
         ((to_timestamp(END_DATE)) - (to_timestamp(START_DATE))) as ST_END_DIFF,
-        timestampdiff(second,to_timestamp(START_DATE),to_timestamp(END_DATE))  AS TRIP_DURATION
+        timestampdiff(second,to_timestamp(START_DATE),to_timestamp(END_DATE))  AS TRIP_DURATION,
+        member
+
 
     from {{ source('DEMO', 'CITI_BIKE_MASTER') }}
     where ride_id <> 'ride_id'
